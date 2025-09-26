@@ -15,5 +15,5 @@ spring.security.oauth2.client.registration.github.client-secret=SEU_CLIENT_SECRE
 
 # Integrantes
 
-Guilherme Guimarães RM557074
-Matheus Oliveira de Luna RM555547
+- Guilherme Guimarães RM557074
+- Matheus Oliveira de Luna RM555547
