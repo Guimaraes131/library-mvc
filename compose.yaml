@@ -1,1 +1,10 @@
 services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: library
+    environment:
+      - 'POSTGRES_DB=library'
+      - 'POSTGRES_PASSWORD=library'
+      - 'POSTGRES_USER=library'
+    ports:
+      - '5432:5432'
