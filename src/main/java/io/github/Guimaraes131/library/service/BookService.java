@@ -8,6 +8,8 @@ import io.github.Guimaraes131.library.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BookService {
@@ -29,5 +31,9 @@ public class BookService {
                 .build();
 
         return bookRepository.save(book);
+    }
+
+    public List<Book> index() {
+        return bookRepository.findAll();
     }
 }

@@ -20,8 +20,10 @@ public class BookController {
     private final BookService bookService;
     private final AuthorService authorService;
 
-    @GetMapping()
-    public String index() {
+    @GetMapping
+    public String index(Model model) {
+        model.addAttribute("books", bookService.index());
+
         return "index";
     }
 

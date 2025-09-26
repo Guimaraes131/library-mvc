@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Library - Bem-vindo</title>
+    <title>Library - Livros</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
@@ -11,74 +11,125 @@
             font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
             background: #0d0d0d; /* preto */
             color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
         }
-        .card {
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: #1a1a1a;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.6);
-            text-align: center;
-            width: 360px;
+            padding: 16px 32px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        h1 {
-            margin: 0 0 20px;
-            font-size: 28px;
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
             color: #a259ff; /* roxo */
             font-family: 'Montserrat', sans-serif;
         }
-        p {
-            font-size: 18px;
-            color: #e0e0e0;
-            margin-bottom: 20px;
-            font-family: 'Poppins', sans-serif;
-        }
-        a.home-btn {
-            display: inline-block;
+
+        .nav-btn {
             background: #6f42c1; /* roxo escuro */
             color: #fff;
-            text-decoration: none;
-            padding: 12px 20px;
+            padding: 8px 16px;
             border-radius: 8px;
+            font-size: 14px;
             font-weight: bold;
-            transition: background 0.2s ease-in-out;
+            text-decoration: none;
             font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s ease-in-out;
         }
-        a.home-btn:hover {
+
+        .nav-btn:hover {
             background: #a259ff; /* roxo claro */
         }
 
         .exit-btn {
             background: #ff0033;
-            padding: 8px 12px;
-            border: none;
+            padding: 8px 16px;
             border-radius: 8px;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: bold;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
             cursor: pointer;
+            transition: background 0.2s ease-in-out;
+        }
+
+        .exit-btn:hover {
+            background: #cc0029;
         }
 
         .exit-btn:link,
         .exit-btn:visited,
-        .exit-btn:hover,
         .exit-btn:active,
         .exit-btn:focus {
             color: #fff;
             text-decoration: none;
         }
+
+        main {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .book-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+            padding: 20px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #a259ff; /* roxo */
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .book-card p {
+            margin: 6px 0;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
     </style>
 </head>
 <body>
-<div class="card">
-    <h1>Library</h1>
-    <p>Seja bem-vindo ao nosso sistema!</p>
+
+<header>
+    <div class="header-left">
+        <h1>Library</h1>
+        <a th:href="@{/books/form}" class="nav-btn">Adicionar Livro</a>
+        <a th:href="@{/authors/form}" class="nav-btn">Adicionar Autor</a>
+    </div>
     <a th:href="@{/logout}" class="exit-btn">Sair</a>
-</div>
+</header>
+
+<main>
+    <div class="book-card" th:each="book : ${books}">
+        <h2 th:text="${book.title}">Título do Livro</h2>
+        <p><strong>Autor:</strong> <span th:text="${book.author.name}">Nome do Autor</span></p>
+        <p><strong>Gênero:</strong> <span th:text="${book.genre}">Gênero</span></p>
+        <p><strong>Data Lançamento:</strong> <span th:text="${book.publicationDate}">2025</span></p>
+    </div>
+</main>
+
 </body>
 </html>

@@ -64,11 +64,15 @@
         }
 
         select {
-            appearance: none; /* Remove a seta padrão */
-            background: #333 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zY3JlZW5zYXRpY24vY29tcG9uZW50cy9jb3JlL3JlY3Qtc3BhcnN0YW5kYXJkL3doaXRlX3BhbmVsLXNob3BldmVjdG9yLmZyZXNoYml0cy5zY3JpcHQtZ2V0LXNlY3Rvcl9zZXBhcmF0ZGlmZnMuZGVmYXVsdC5mb3JtYXR0ZWQvc3ZnLz4=');
-            background-position: right 10px center;
-            background-size: 16px;
-            background-repeat: no-repeat;
+            appearance: none;
+            background: #333;
+            padding-right: 24px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
         }
 
         input[type="submit"] {
@@ -81,23 +85,35 @@
             cursor: pointer;
             transition: background 0.2s ease-in-out;
             font-family: 'Poppins', sans-serif;
+            flex: 1;
         }
 
         input[type="submit"]:hover {
             background: #a259ff; /* roxo claro */
         }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        a.cancel-btn {
+            background: #ff0033;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            flex: 1;
+            transition: background 0.2s ease-in-out;
+        }
+
+        a.cancel-btn:hover {
+            background: #cc0029;
         }
     </style>
 </head>
 <body>
 <div class="card">
     <h1>Adicionar Livro</h1>
-    <form th:action="${'/books/form'}" th:object="${postBook}" method="post">
+    <form th:action="@{/books/form}" th:object="${postBook}" method="post">
         <div class="form-group">
             <label for="title">Titulo</label>
             <input th:field="*{title}" type="text" id="title" name="title" placeholder="Digite o titulo do livro" required>
@@ -132,7 +148,10 @@
             </select>
         </div>
 
-        <input type="submit" value="Adicionar Livro">
+        <div class="form-actions">
+            <input type="submit" value="Adicionar Livro">
+            <a th:href="@{/books}" class="cancel-btn">Cancelar</a>
+        </div>
     </form>
 </div>
 </body>
