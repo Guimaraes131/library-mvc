@@ -6,9 +6,11 @@ import io.github.Guimaraes131.library.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
@@ -43,8 +45,11 @@ public class BookController {
     }
 
     @PostMapping("/form")
-    public String create(PostBookDTO dto) {
+    public String create(PostBookDTO dto, BindingResult result, RedirectAttributes redirect) {
+        if (result.hasErrors()) return "bookForm";
+
         bookService.create(dto);
+        redirect.addFlashAttribute("message", "Livro adicionado com sucesso.");
 
         return "redirect:/books";
     }
