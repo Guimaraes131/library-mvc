@@ -7,9 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -49,6 +47,14 @@ public class BookController {
         bookService.create(dto);
         redirect.addFlashAttribute("message", "Livro adicionado com sucesso.");
 
+        return "redirect:/books";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id, RedirectAttributes redirect) {
+
+        bookService.delete(id);
+        redirect.addFlashAttribute("message", "Livro excluído com sucesso.");
         return "redirect:/books";
     }
 }
