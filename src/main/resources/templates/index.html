@@ -2,14 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Library - Livros</title>
-    <!-- Google Fonts -->
+    <title>Library</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
-            background: #0d0d0d; /* preto */
+            background: #0d0d0d;
             color: #e0e0e0;
             margin: 0;
             padding: 0;
@@ -33,12 +32,12 @@
         header h1 {
             margin: 0;
             font-size: 24px;
-            color: #a259ff; /* roxo */
+            color: #a259ff;
             font-family: 'Montserrat', sans-serif;
         }
 
         .nav-btn {
-            background: #6f42c1; /* roxo escuro */
+            background: #6f42c1;
             color: #fff;
             padding: 8px 16px;
             border-radius: 8px;
@@ -51,7 +50,7 @@
         }
 
         .nav-btn:hover {
-            background: #a259ff; /* roxo claro */
+            background: #a259ff;
         }
 
         .exit-btn {
@@ -100,7 +99,7 @@
         .book-card h2 {
             font-size: 20px;
             margin-bottom: 10px;
-            color: #a259ff; /* roxo */
+            color: #a259ff;
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -110,9 +109,9 @@
             font-family: 'Poppins', sans-serif;
         }
         .alert-success {
-            background-color: #0d0d0d;   /* fundo preto */
-            color: #28a745;              /* texto verde */
-            border: 1px solid #28a745;  /* borda verde */
+            background-color: #0d0d0d;
+            color: #28a745;
+            border: 1px solid #28a745;
             padding: 12px 16px;
             border-radius: 6px;
             font-family: 'Poppins', sans-serif;
@@ -121,7 +120,6 @@
             margin-bottom: 16px;
         }
 
-        /* Botão de fechar */
         .close-btn {
             position: absolute;
             top: 4px;
@@ -135,7 +133,7 @@
         }
 
         .close-btn:hover {
-            color: #a259ff; /* muda para roxo ao passar o mouse */
+            color: #a259ff;
         }
     </style>
 </head>
@@ -159,10 +157,10 @@
 
 
     <div class="book-card" th:each="book : ${books}">
-        <h2 th:text="${book.title}">Título do Livro</h2>
-        <p><strong>Autor:</strong> <span th:text="${book.author.name}">Nome do Autor</span></p>
-        <p><strong>Gênero:</strong> <span th:text="${book.genre}">Gênero</span></p>
-        <p><strong>Data Lançamento:</strong> <span th:text="${book.publicationDate}">2025</span></p>
+        <h2 th:text="${book.title}"></h2>
+        <p><strong>Autor:</strong> <span th:text="${book.author.name}"></span></p>
+        <p><strong>Gênero:</strong> <span th:text="${book.genre}"></span></p>
+        <p><strong>Data Lançamento:</strong> <span th:text="${book.publicationDate}"></span></p>
     </div>
 </main>
 
