@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
@@ -37,5 +38,12 @@ public class BookController {
         model.addAttribute("authors", authorService.index());
 
         return "bookForm";
+    }
+
+    @PostMapping("/form")
+    public String create(PostBookDTO dto) {
+        bookService.create(dto);
+
+        return "redirect:/books";
     }
 }

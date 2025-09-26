@@ -21,4 +21,10 @@ public class AuthorService {
     public List<Author> index() {
         return authorRepository.findAll();
     }
+
+    public Author findById(Long id) {
+        return authorRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Author not found")
+        );
+    }
 }

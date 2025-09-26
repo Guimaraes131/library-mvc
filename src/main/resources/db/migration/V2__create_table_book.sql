@@ -1,5 +1,5 @@
 CREATE TABLE tb_book (
-    id BIGINT PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     title TEXT NOT NULL UNIQUE,
     description TEXT,
     publication_date DATE NOT NULL,

@@ -1,6 +1,5 @@
 package io.github.Guimaraes131.library.controller.dto;
 
-import io.github.Guimaraes131.library.model.Author;
 import io.github.Guimaraes131.library.model.Genre;
 
 import java.math.BigDecimal;
