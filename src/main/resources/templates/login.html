@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Library - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d0d0d; /* preto */
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+            text-align: center;
+            width: 340px;
+        }
+        h1 {
+            margin: 0 0 20px;
+            font-size: 28px;
+            color: #a259ff; /* roxo */
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #e0e0e0;
+        }
+        a.github-btn {
+            display: inline-block;
+            background: #6f42c1; /* roxo mais escuro */
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.2s ease-in-out;
+        }
+        a.github-btn:hover {
+            background: #a259ff; /* roxo claro */
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>Library</h1>
+    <h2>Login</h2>
+    <p>Entre usando sua conta do GitHub:</p>
+    <a th:href="@{/oauth2/authorization/github}" class="github-btn">
+        Login com GitHub
+    </a>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: 'postgres:latest'
+    image: 'postgres:16.2'
     container_name: library
     environment:
       - 'POSTGRES_DB=library'
