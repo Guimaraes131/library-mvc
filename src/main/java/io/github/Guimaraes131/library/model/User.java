@@ -15,6 +15,6 @@ public class User {
     private String name;
     private String email;
 
-    @Column(name = "avatar_url")
+    @Column(name = "avatar")
     private String avatarUrl;
 }
